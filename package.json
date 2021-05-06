@@ -1,0 +1,38 @@
+{
+  "name": "nep-token",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "compile": "truffle compile",
+    "test": "truffle test",
+    "coverage": "truffle run coverage",
+    "flatten": "truffle-flattener ./contracts/NeptuneMutualToken.sol > ./contracts/NeptuneMutualToken.flat.sol",
+    "solhint": "solhint \"contracts/**/*.sol\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neptune-mutual/nep-token.git"
+  },
+  "author": "Neptune Mutual Team",
+  "license": "BUSL-1.1",
+  "bugs": {
+    "url": "https://github.com/neptune-mutual/nep-token/issues"
+  },
+  "homepage": "https://github.com/neptune-mutual/nep-token#readme",
+  "devDependencies": {
+    "bignumber.js": "^9.0.1",
+    "chai": "^4.3.4",
+    "chai-as-promised": "^7.1.1",
+    "chai-bignumber": "^3.0.0",
+    "openzeppelin-solidity": "^4.0.0",
+    "prettier": "^2.2.1",
+    "prettier-plugin-solidity": "*",
+    "solidity-coverage": "^0.7.16",
+    "standard": "^16.0.3",
+    "truffle-flattener": "^1.5.0"
+  }
+}

@@ -1,0 +1,19 @@
+// SPDX-License-Identifier: BUSL-1.1
+pragma solidity >=0.4.22 <0.9.0;
+
+abstract contract Constants {
+  uint256 public constant _ONE_YEAR = 365 days;
+
+  enum MintKey { INVALID, SEED, COMMUNITY, LP_REWARDS, PROTOCOL_INCENTIVE, TOKEN_SALE_OR_DISTRIBUTION, ECOSYSTEM_FUND, LONG_TERM_PROTOCOL_INCENTIVE, FOUNDING_TEAM_LEGAL }
+
+  uint256 public constant _ALLOCATION_SEED = 45000000 ether;
+  uint256 public constant _ALLOCATION_COMMUNITY_INCENTIVE = 22500000 ether;
+  uint256 public constant _ALLOCATION_LIQUIDITY_POOL_REWARDS = 67500000 ether;
+  uint256 public constant _ALLOCATION_PROTOCOL_INCENTIVE = 90000000 ether;
+  uint256 public constant _ALLOCATION_TOKEN_SALE_OR_DISTRIBUTION = 135000000 ether;
+  uint256 public constant _ALLOCATION_ECOSYSTEM_FUND = 180000000 ether;
+  uint256 public constant _ALLOCATION_LT_PROTOCOL_INCENTIVE = 225000000 ether;
+  uint256 public constant _ALLOCATION_FOUNDING_TEAM_LEGAL = 135000000 ether;
+
+  uint256 public constant _ALLOCATION_FOUNDING_TEAM_LEGAL_ANNUAL = (_ALLOCATION_FOUNDING_TEAM_LEGAL * 20) / 100; // For 5 years
+}
