@@ -6,7 +6,7 @@ const { advanceToTime } = require('./blocks')
 const { toWei, MintKey, allocations, foundingTeamYearlyAllocation, DAYS, ZERO_X } = require('./constants')
 
 contract('Neptune Mutual Token', (accounts) => {
-  const [owner, alice, bob] = accounts
+  const [owner, alice, bob, mallory] = accounts
 
   let nep
 
@@ -71,6 +71,29 @@ contract('Neptune Mutual Token', (accounts) => {
       for (let mintKey = 1; mintKey < 9; mintKey++) {
         await nep.removeMinter(mintKey, alice, { from: owner })
       }
+    })
+  })
+
+  describe('Multi Transfer', () => {
+    beforeEach(async () => {
+      nep = await NeptuneMutualToken.new()
+      await nep.addMinter(MintKey.SEED, alice)
+
+      await nep.mintTokens(MintKey.SEED, alice, toWei(500), { from: alice })
+    })
+
+    it('performs multi-transfer', async () => {
+      const accounts = [owner, bob, mallory]
+      const amounts = [toWei(10), toWei(20), toWei(5)]
+
+      await nep.multiTransfer(accounts, amounts, { from: alice }).should.not.be.rejected
+    })
+
+    it('rejects multi-transfer when arguments have unequal length', async () => {
+      const accounts = [owner, bob, mallory]
+      const amounts = [toWei(10), toWei(20)]
+
+      await nep.multiTransfer(accounts, amounts, { from: alice }).should.be.rejectedWith('Invalid operation')
     })
   })
 

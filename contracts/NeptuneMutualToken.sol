@@ -198,4 +198,17 @@ contract NeptuneMutualToken is ReentrancyGuard, ERC20, Minter {
     super._burn(account, amount);
     emit TokenBurned(account, amount);
   }
+
+  /**
+   * @dev Transfers the requested amount of tokens to specified accounts.
+   * @param accounts List of accounts to transfer tokens
+   * @param amounts Respective token amounts to transfer
+   */
+  function multiTransfer(address[] memory accounts, uint256[] memory amounts) external nonReentrant {
+    require(accounts.length == amounts.length, "Invalid operation");
+
+    for (uint256 i = 0; i < accounts.length; i++) {
+      super._transfer(super._msgSender(), accounts[i], amounts[i]);
+    }
+  }
 }

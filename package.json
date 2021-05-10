@@ -10,8 +10,18 @@
     "compile": "truffle compile",
     "test": "truffle test",
     "coverage": "truffle run coverage",
-    "flatten": "truffle-flattener ./contracts/NeptuneMutualToken.sol > ./contracts/NeptuneMutualToken.flat.sol",
+    "flatten": "truffle-flattener ./contracts/NeptuneMutualToken.sol > ./contracts/.NeptuneMutualToken.sol",
     "solhint": "solhint \"contracts/**/*.sol\""
+  },
+  "standard": {
+    "env": [
+      "mocha"
+    ],
+    "global": [
+      "contract",
+      "artifacts",
+      "web3"
+    ]
   },
   "repository": {
     "type": "git",
